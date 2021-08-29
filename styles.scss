@@ -59,13 +59,22 @@ body {
 			background-color: #dd6969;
 			transition: scale 0.3s;
 
+      &.operator{
+        color: black;
+        background-color: white;
+        &.modulus{
+          background-color: #dd6969;
+          color:white;
+        }
+      }
+
 			&.clear {
 				font-size: 22px;
 			}
 
 			&.equals {
 				background-color: white;
-				color: #dd6969;
+				color: black;
 				grid-column: 3/5;
 				border-radius: 1.2rem;
 			}
