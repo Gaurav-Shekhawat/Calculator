@@ -21,7 +21,7 @@ function divide(a, b) {
 }
 
 function modulus(a, b) {
-  return a % b;
+	return a % b;
 }
 
 function updateUpperDisplay() {
@@ -43,10 +43,10 @@ function operate(a, operator, b) {
 			break;
 		case "/":
 			return divide(a, b);
-      break;
-    case "%":
-      return modulus(a, b);
-      break;
+			break;
+		case "%":
+			return modulus(a, b);
+			break;
 	}
 }
 
@@ -106,11 +106,9 @@ function operatorPressed(e) {
 			return;
 		}
 		updateUpperDisplay();
-		displayValue = operate(
-			Number(bufferValue),
-			lastOperator,
-			Number(displayValue)
-		);
+		displayValue =
+			operate(Number(bufferValue), lastOperator, Number(displayValue)) +
+			"";
 		updateDisplayValue();
 		lastOperator = null;
 		bufferValue = null;
