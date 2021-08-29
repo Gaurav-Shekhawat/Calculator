@@ -20,6 +20,10 @@ function divide(a, b) {
 	return Math.floor((a * 100) / b) / 100;
 }
 
+function modulus(a, b) {
+  return a % b;
+}
+
 function updateUpperDisplay() {
 	if (equalpressed === true) {
 		upperDisplay.innerText += ` ${displayValue} =`;
@@ -39,7 +43,10 @@ function operate(a, operator, b) {
 			break;
 		case "/":
 			return divide(a, b);
-			break;
+      break;
+    case "%":
+      return modulus(a, b);
+      break;
 	}
 }
 
