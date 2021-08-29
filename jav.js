@@ -50,12 +50,10 @@ function updateDisplayValue() {
 
 function addToDisplay(e) {
 	displayValueAssigned = true;
-	if (!isNaN(Number(this.innerText))) {
-		if (displayValue === 0) {
-			displayValue = "";
-		}
-		displayValue = displayValue + this.innerText;
+	if (displayValue === 0) {
+		displayValue = "";
 	}
+	displayValue = displayValue + this.innerText;
 	updateDisplayValue();
 }
 
