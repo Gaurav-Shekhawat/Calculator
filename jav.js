@@ -65,6 +65,10 @@ function operatorPressed(e) {
 		return;
 	}
 
+	if (lastOperator != null && displayValue === "") {
+		lastOperator = this.innerText;
+	}
+
 	if (displayValueAssigned === false && bufferValue === null) {
 		return;
 	}
