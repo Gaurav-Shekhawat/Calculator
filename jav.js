@@ -79,6 +79,10 @@ function operatorPressed(e) {
 		lastOperator = this.innerText;
 		updateDisplayValue();
 	} else {
+		if (lastOperator === null) {
+			return;
+		}
+
 		displayValue = operate(
 			Number(bufferValue),
 			lastOperator,
