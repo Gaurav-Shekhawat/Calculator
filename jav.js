@@ -43,6 +43,13 @@ function operate(a, operator, b) {
 	}
 }
 
+function deleteFunction() {
+	if (displayValue != "" && displayValue != 0) {
+		displayValue = displayValue.substr(0, displayValue.length - 1);
+		updateDisplayValue();
+	}
+}
+
 function updateDisplayValue() {
 	if (displayValue === "") display.innerText = 0;
 	else display.innerText = displayValue;
@@ -129,3 +136,6 @@ const clear = document.querySelector(".clear");
 clear.addEventListener("click", clearingEverything);
 
 const upperDisplay = document.querySelector(".display.up");
+
+const deleteChar = document.querySelector(".delete");
+deleteChar.addEventListener("click", deleteFunction);
