@@ -16,7 +16,7 @@ function multiply(a, b) {
 }
 
 function divide(a, b) {
-	return a / b;
+	return Math.floor((a * 100) / b) / 100;
 }
 
 function operate(a, operator, b) {
