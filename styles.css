@@ -7,7 +7,7 @@ body {
   display: flex;
   height: 100vh;
   color: white;
-  background-color: #DF7474; }
+  background-color: #df7474; }
 
 .container {
   margin: auto;
@@ -18,11 +18,17 @@ body {
   background-color: #dd6969;
   border-radius: 1rem;
   box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset; }
-  .container .display {
+  .container .display-container {
     height: 180px;
-    font-size: 30px;
+    font-size: 50px;
     color: white;
-    padding: 10px; }
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-end; }
+    .container .display-container .display.up {
+      font-size: 30px; }
   .container .buttons {
     display: grid;
     grid-template-columns: repeat(4, 1fr);

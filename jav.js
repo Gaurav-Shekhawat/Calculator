@@ -2,6 +2,7 @@ let displayValue = 0;
 let displayValueAssigned = false;
 let bufferValue = null;
 let lastOperator = null;
+let equalpressed = false;
 
 function add(a, b) {
 	return a + b;
@@ -17,6 +18,12 @@ function multiply(a, b) {
 
 function divide(a, b) {
 	return Math.floor((a * 100) / b) / 100;
+}
+
+function updateUpperDisplay() {
+	if (equalpressed === true) {
+		upperDisplay.innerText += ` ${displayValue} =`;
+	} else upperDisplay.innerText = `${bufferValue} ${lastOperator}`;
 }
 
 function operate(a, operator, b) {
@@ -62,14 +69,16 @@ function operatorPressed(e) {
 		displayValue = "";
 		updateDisplayValue();
 		lastOperator = this.innerText;
+		updateUpperDisplay();
 		return;
 	}
 
 	if (lastOperator != null && displayValue === "") {
 		lastOperator = this.innerText;
+		updateUpperDisplay();
 	}
 
-	if (displayValueAssigned === false && bufferValue === null) {
+	if (displayValueAssigned === false) {
 		return;
 	}
 
@@ -78,11 +87,13 @@ function operatorPressed(e) {
 		displayValue = "";
 		lastOperator = this.innerText;
 		updateDisplayValue();
+		updateUpperDisplay();
 	} else {
+		equalpressed = true;
 		if (lastOperator === null) {
 			return;
 		}
-
+		updateUpperDisplay();
 		displayValue = operate(
 			Number(bufferValue),
 			lastOperator,
@@ -91,6 +102,7 @@ function operatorPressed(e) {
 		updateDisplayValue();
 		lastOperator = null;
 		bufferValue = null;
+		equalpressed = false;
 	}
 }
 
@@ -98,6 +110,7 @@ function clearingEverything() {
 	displayValue = 0;
 	bufferValue = null;
 	lastOperator = null;
+	upperDisplay.innerText = "";
 	updateDisplayValue();
 }
 
@@ -106,7 +119,7 @@ numbers.forEach((number) => {
 	number.addEventListener("click", addToDisplay);
 });
 
-const display = document.querySelector(".display");
+const display = document.querySelector(".display.down");
 display.innerText = displayValue;
 
 const operators = document.querySelectorAll(".operator");
@@ -116,3 +129,5 @@ operators.forEach((operator) => {
 
 const clear = document.querySelector(".clear");
 clear.addEventListener("click", clearingEverything);
+
+const upperDisplay = document.querySelector(".display.up");
